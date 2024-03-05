@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block main %}
+
+<section id="news-letter">
+    <div class="container">
+        <!-- Check of recipes are available-->
+        {% if recipes %}
+        <h2>{{ search_query }}</h2>
+        <form method="POST" action="/">
+            <input type="text" name="search_query" placeholder="Search for recipes">
+            <button type="submit" class="button">Search</button>
+        </form>
+    </div>
+    <ul>
+        {% for recipe in recipes %}
+        <li>
+            <h3 class="recipe-title">{{ recipe.title }}</h3>
+            {% if recipe.image %}
+            <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+            {% endif %}
+            <a href="{{ url_for('view_recipe', recipe_id=recipe.id, search_query=search_query) }}">View</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <!-- If no recipes are found -->
+    <div id="container-altsearch" class="container">
+        {% else %}
+        <div class="container">
+            <form method="POST" action="/">
+                <input type="text" name="search_query" placeholder="Search for recipes">
+                <button type="submit" class="button">Search</button>
+            </form>
+        </div>
+        <h2>{{ search_query }}</h2>
+        <h2>Opps!No recipes found!!</h2>
+        <p>Recipe named <span class="span-text">{{ search_query }}</span> cannot be found in our database.. Kindly search for something else..</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block main %}
+
+<section id="news-letter">
+    <div class="recipe-details">
+        <h1>{{ recipe.title }}</h1>
+
+        {% if recipe.image %}
+        <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+        {% endif %}
+
+        <!-- Ingredients section -->
+
+        <h2 class="section-title">Ingredients</h2>
+        <ul class="ingredient-list">
+            {% for ingredient in recipe.extendedIngredients %}
+            <li>{{ ingredient.original }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Instructions Section -->
+
+        <h2 class="section-title">Instructions</h2>
+        <ol class="instruction-list">
+            {% for step in recipe.analyzedInstructions[0].steps %}
+            <li>{{ step.step }}</li>
+            {% endfor %}
+        </ol>
+        <a class="button" href="/?search_query={{ search_query }}">Back to search results</a>
+    </div>
+</section>
+{% endblock %}

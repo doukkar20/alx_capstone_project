@@ -1,0 +1,56 @@
+/* Header */
+header {
+    background: #323435;
+    color: white;
+    padding-top: 30px;
+    /* min-height sets a minimum height when @responsive */
+    min-height: 70px;
+    border-bottom: rgb(168, 152, 141) 3px solid;
+
+    /* Fix to top */
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    /*z-index: 100;*/
+}
+
+header a {
+    color: rgb(233, 217, 217);
+    /* Removes the default underline that comes with links */
+    text-decoration: none;
+    /* Sets all text to uppercase*/
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+header li {
+    float: left;
+    display: inline;
+    /*top, right, bottom, left*/
+    padding: 0 20px 0 20px;
+}
+
+header #branding {
+    float: left;
+}
+
+header #branding h1 {
+    margin: 0;
+}
+
+header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+header .highlight,
+header .current a {
+    color: rgb(121, 121, 49);
+    font-weight: bold;
+}
+
+header a:hover {
+    color: rgb(121, 121, 49);
+    font-weight: bold;
+}
